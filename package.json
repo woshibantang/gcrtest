@@ -1,0 +1,15 @@
+{
+  "name": "gcrtest",
+  "version": "1.0.0",
+  "author": "",
+  "private": true,
+  "scripts": {
+    "sync": "node sync.js"
+  },
+  "dependencies": {
+    "axios": "0.18.0",
+    "docker-registry-client": "^3.3.0",
+    "promise": "^8.0.1",
+    "shelljs": "0.8.1"
+  }
+}
