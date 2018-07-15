@@ -18,7 +18,7 @@ function syncImages(repoName,tagList){
 	for(var idx=0;idx<tagList.length;idx++){
 		shell.exec('docker pull '+repoName+':'+tagList[idx]);
 		shell.exec('docker tag '+repoName+':'+tagList[idx]+' '+transRepoName(repoName)+':'+tagList[idx]);
-		shell.exec('docker push '+repoName+':'+tagList[idx]+' '+transRepoName(repoName)+':'+tagList[idx]);
+		shell.exec('docker push '+transRepoName(repoName)+':'+tagList[idx]);
 	}
 
 	for(var idx=0;idx<tagList.length;idx++){
