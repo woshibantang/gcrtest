@@ -28,7 +28,13 @@ var client = DRC.createClientV2({name: transRepoName(repoName),username:userName
 	client.listTags(function (err, response) {
     	client.close();
     	if(err){
-    		reject(err);
+    		let errorMessage = inspect(err);
+    		if(errorMessage.indexOf('NAME_UNKNOWN')>=0){
+    			resolve([]);
+    		}else{
+    			reject(err);	
+    		}
+    		
     	}else{
     		resolve(response.tags);
     	}
@@ -44,13 +50,8 @@ function listRepoTags(repoName){
 	client.listTags(function (err, response) {
     	client.close();
     	if(err){
-    		let errorMessage = inspect(err);
-    		if(errorMessage.indexOf('NAME_UNKNOWN')>=0){
-    			resolve([]);
-    		}else{
-    			reject(err);	
-    		}
     		
+    		reject(err);
     	}else{
     		resolve(response.tags);
     	}
